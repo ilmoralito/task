@@ -6,7 +6,7 @@ class User {
     String password
     String fullName
     String department
-    String role
+    String role = "user"
     Boolean enabled
 
 	Date dateCreated
