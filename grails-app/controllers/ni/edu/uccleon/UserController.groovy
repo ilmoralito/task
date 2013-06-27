@@ -35,7 +35,7 @@ class UserController {
 
     def profile(String email, String fullName, String department) {
     	if (request.method == "POST") {
-    		def user = User.get(session?.user?.id)
+    		def user = User.findByEmail(session?.user?.email)
 
     		if (!user) {
     			response.sendError 404
@@ -44,7 +44,8 @@ class UserController {
     		user.properties = params
 
     		if (!user.save()) {
-    			return [user:user]
+    			redirect action:"profile", params:[user:user]
+    			return
     		}
 
     		session.user = user//update current session user info
