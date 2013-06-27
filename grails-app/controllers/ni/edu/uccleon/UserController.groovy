@@ -16,6 +16,10 @@ class UserController {
     			redirect action:"login"
     			return
     		}
+
+    		session.user = user
+    		redirect controller:"application"
+    		return
     	}
     }
 
