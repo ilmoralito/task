@@ -21,7 +21,7 @@ class User {
     }
 
     static mapping = {
-    	verison false
+    	version false
     }
 
     def beforeInsert() {

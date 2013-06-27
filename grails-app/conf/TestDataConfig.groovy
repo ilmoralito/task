@@ -1,7 +1,9 @@
 testDataConfig {
     sampleData {
-        def i = 1
-        email = {-> "user${i++}@ucc.edu.ni" }
+        "ni.edu.uccleon.User" {
+                def i = 1
+                email = {-> "user${i++}@ucc.edu.ni" }
+        }
     }
 }
 
