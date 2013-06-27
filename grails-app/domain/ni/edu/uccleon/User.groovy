@@ -26,6 +26,11 @@ class User {
         login {email, password ->
             eq "email", email
             eq "password", password.encodeAsSHA1()
+            isEnabled()
+        }
+
+        isEnabled {
+            eq "enabled", true
         }
     }
 
