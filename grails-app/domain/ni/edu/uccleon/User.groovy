@@ -22,6 +22,13 @@ class User {
         role inList:["admin", "user"]
     }
 
+    static namedQueries = {
+        login {email, password ->
+            eq "email", email
+            eq "password", password.encodeAsSHA1()
+        }
+    }
+
     static mapping = {
     	version false
     }
