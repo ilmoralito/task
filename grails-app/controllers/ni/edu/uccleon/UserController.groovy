@@ -4,7 +4,8 @@ class UserController {
 
 	static defaultAction = "login"
 	static allowedMethods = [
-		login:["GET", "POST"]
+		login:["GET", "POST"],
+		logout:"GET"
 	]
 
     def login(String email, String password) {
@@ -21,6 +22,11 @@ class UserController {
     		redirect controller:"application"
     		return
     	}
+    }
+
+    def logout() {
+    	session.user = null
+    	redirect action:"login"
     }
 
 }
