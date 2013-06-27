@@ -13,7 +13,9 @@ class User {
 	Date lastUpdated
 
     static constraints = {
-        email blank:false, unique:true, email:true
+        email blank:false, unique:true, email:true, validator:{email, user ->
+            email.split("@")[1] == "ucc.edu.ni"
+        }
         password blank:false
         fullName blank:false
         department inList:["Soporte Tecnico", "Administracion", "Registro", "Recursos Humanos"]
