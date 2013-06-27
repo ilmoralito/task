@@ -10,7 +10,7 @@ class Application {
     }
 
     static mapping = {
-    	verison false
+    	version false
     }
 
     String toString() {
