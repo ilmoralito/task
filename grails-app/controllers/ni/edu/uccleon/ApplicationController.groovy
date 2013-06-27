@@ -2,10 +2,10 @@ package ni.edu.uccleon
 
 class ApplicationController {
 
-	static defaultAction = ""
+	static defaultAction = "list"
 	static allowedMethods = []
 
-    def index() {
+    def list() {
 
     }
 
