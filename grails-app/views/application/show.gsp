@@ -15,6 +15,7 @@
 		<g:hiddenField name="id" value="${params?.id}"/>
 		<g:render template="form"/>
 		<g:submitButton name="send" value="Actualizar solicitud" class="btn"/>
+		<g:link action="delete" id="${params?.id}" class="btn">Borrar solicitud</g:link>
 	</g:form>
 </body>
 </html>
