@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="layout" content="front">
 	<title>Iniciar sesion</title>
-	<r:require modules = "bootstrap-css, bootstrap-responsive-css"/>
+	<r:require modules = "bootstrap-css, bootstrap-responsive-css, style"/>
 </head>
 <body>
 	<g:form action="login">

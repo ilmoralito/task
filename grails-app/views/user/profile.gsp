@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="layout" content="back">
 	<title>Perfil de ${session?.user}</title>
-	<r:require modules = "bootstrap-css, bootstrap-responsive-css"/>
+	<r:require modules = "bootstrap-css, bootstrap-responsive-css, style"/>
 </head>
 <body>
 	<g:hasErrors bean="${user}">
