@@ -29,4 +29,32 @@ class ApplicationController {
     	}
     }
 
+    def show(Integer id) {
+        def app = Application.findByIdAndUser(id, session?.user)
+
+        if (!app) {
+            response.sendError 404
+        }
+
+        [app:app]
+    }
+
+    def update(Integer id) {
+        def app = Application.findByIdAndUser(id, session?.user)
+
+        if (!app) {
+            response.sendError 404
+        }
+
+        app.properties = params
+
+        if (!app.save()) {
+            redirect action:"show", params:[id:id, app:app]
+            return
+        }
+
+        flash.message = "app.updated"
+        redirect action:"show", id:id
+    }
+
 }
