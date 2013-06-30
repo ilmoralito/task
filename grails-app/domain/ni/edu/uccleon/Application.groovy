@@ -25,10 +25,6 @@ class Application {
     static belongsTo = [user:User]
     static hasMany = [attendedBy: String]
 
-    static mapping = {
-    	version false
-    }
-
     String toString() {
     	"$user $dateCreated"
     }
