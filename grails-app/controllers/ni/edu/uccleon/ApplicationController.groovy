@@ -9,7 +9,7 @@ class ApplicationController {
 	]
 
     def list(String state) {
-    	def apps = Application.listByState(state, session?.user).list()
+    	def apps = Application.listByState(state, session?.user).list(sort:"dateCreated", order:"desc")
 
     	[apps:apps]
     }

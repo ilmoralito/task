@@ -4,4 +4,4 @@
 <g:select name="department" from="${departments}" value="${app?.department}"/>
 
 <label for="description">Descripcion</label>
-<g:textField name="description" value="${app?.description}" class="input-block-level" placeholder="Descripcion en 120 caracteres..."/>
+<g:textField name="description" value="${app?.description}" class="input-block-level" autofocus="true" placeholder="Descripcion en 120 caracteres..."/>
