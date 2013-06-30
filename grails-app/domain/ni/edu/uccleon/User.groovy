@@ -34,6 +34,8 @@ class User {
         }
     }
 
+    static hasMany = [applications:Application]
+
     static mapping = {
     	version false
     }
@@ -49,7 +51,7 @@ class User {
     }
 
     String toString() {
-    	fullName
+    	email
     }
 
 }
