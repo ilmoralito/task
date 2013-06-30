@@ -9,16 +9,19 @@
 <body>
 	<div class="row">
 		<div class="span10">
-			<div class="btn-group pull-right">
-			    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-			    	Solicitudes
-			    	<span class="caret"></span>
-			    </a>
-		    	<ul class="dropdown-menu">
-		    		<li><g:link action="list" params="[state:'pending']">Pendientes</g:link></li>
-		    		<li><g:link action="list" params="[state:'attending']">Atendiendose</g:link></li>
-		    		<li><g:link action="list" params="[state:'attended']">Atendidas</g:link></li>
-		    	</ul>
+			<div class="pull-right">
+				<g:link action="create" class="btn">Crear solicitud</g:link>
+				<div class="btn-group">
+				    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+				    	Solicitudes
+				    	<span class="caret"></span>
+				    </a>
+					<ul class="dropdown-menu">
+						<li><g:link action="list" params="[state:'pending']">Pendientes</g:link></li>
+						<li><g:link action="list" params="[state:'attending']">Atendiendose</g:link></li>
+						<li><g:link action="list" params="[state:'attended']">Atendidas</g:link></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

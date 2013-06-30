@@ -89,3 +89,5 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+ni.edu.uccleon.departments = ["Soporte Tecnico", "Administracion", "Registro", "Recursos Humanos"]
