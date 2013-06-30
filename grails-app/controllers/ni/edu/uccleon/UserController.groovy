@@ -23,7 +23,7 @@ class UserController {
     		}
 
     		session.user = user
-    		redirect controller:"application"
+    		redirect controller:"application", params:[state:"pending"]
     		return
     	}
     }

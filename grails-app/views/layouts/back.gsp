@@ -12,6 +12,7 @@
 				<!--sidebar-->
 				<ul class="nav nav-tabs nav-stacked">
 					<li><g:link controller="user" action="profile">Perfil</g:link></li>
+					<li><g:link controller="application" params="[state:'pending']">Solicitudes</g:link></li>
 					<li><g:link controller="user" action="logout">Cerrar sesion</g:link></li>
     			</ul>
 			</div>

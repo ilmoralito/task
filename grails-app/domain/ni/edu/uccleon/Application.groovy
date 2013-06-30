@@ -15,6 +15,13 @@ class Application {
         state inList:["pending", "attending", "attended"], maxSize:255
     }
 
+    static namedQueries = {
+        listByState {state, user ->
+            eq "state", state
+            eq "user", user
+        }
+    }
+
     static belongsTo = [user:User]
     static hasMany = [attendedBy: String]
 
