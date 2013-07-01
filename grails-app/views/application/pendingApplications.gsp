@@ -3,17 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="layout" content="back">
-	<title>Solicitudes</title>
+	<title>Solicitudes de servicio</title>
 	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-dropdown, style"/>
 </head>
 <body>
 	<div class="row">
 		<div class="span10">
 			<div class="pull-right">
-				<g:link action="pendingApplications" class="btn">Solicitudes 6</g:link>
 				<div class="btn-group">
 				    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-				    	Solicitudes
+				    	Solicitudes de servicio
 				    	<span class="caret"></span>
 				    </a>
 					<ul class="dropdown-menu">

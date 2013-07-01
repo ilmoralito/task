@@ -10,7 +10,6 @@
 	<div class="row">
 		<div class="span10">
 			<div class="pull-right">
-				<g:link action="pendingApplications" class="btn">Solicitudes 6</g:link>
 				<g:link action="create" class="btn">Crear solicitud</g:link>
 				<div class="btn-group">
 				    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
