@@ -16,9 +16,17 @@ class Application {
     }
 
     static namedQueries = {
-        listByState {state, user ->
-            eq "state", state
+        listByState {user, state ->
             eq "user", user
+            listByApplicationState(state)
+        }
+
+        listByDepartment { department ->
+            eq "department", department
+        }
+
+        listByApplicationState { state ->
+            eq "state", state
         }
     }
 

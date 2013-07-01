@@ -11,7 +11,6 @@
 		<div class="span10">
 			<div class="pull-right">
 				<g:link action="pendingApplications" class="btn">Solicitudes 6</g:link>
-				<g:link action="create" class="btn">Crear solicitud</g:link>
 				<div class="btn-group">
 				    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 				    	Solicitudes
@@ -33,12 +32,20 @@
     	<table class="table table-hover">
     		<thead>
     			<th>Descripcion</th>
+    			<th></th>
     		</thead>
     		<tbdoy>
     			<g:each in="${apps}" var="app">
     				<tr>
     					<td>
-    						<g:link action="show" id="${app.id}">${app.description}</g:link>
+    						<g:link action="show" id="${app.id}">
+    							${app.description} por <strong>${app.user.fullName}</strong> - ${app.user.department}
+    						</g:link>
+    					</td>
+    					<td class="td-mini">
+    						<g:link action="updateState" id="${app.id}">
+    							${app.state}
+    						</g:link>
     					</td>
     				</tr>
     			</g:each>

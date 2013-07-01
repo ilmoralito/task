@@ -8,7 +8,8 @@ class ApplicationController {
 	static allowedMethods = [
 		list:"GET",
 		create:["GET", "POST"],
-        delete:"GET"
+        delete:"GET",
+        pendingApplications:"GET"
 	]
 
     private check() {
@@ -22,7 +23,7 @@ class ApplicationController {
     }
 
     def list(String state) {
-    	def apps = Application.listByState(state, session?.user).list(sort:"dateCreated", order:"desc")
+    	def apps = Application.listByState(session?.user, state).list(sort:"dateCreated", order:"desc")
 
     	[apps:apps]
     }
@@ -80,6 +81,35 @@ class ApplicationController {
         app.delete()
 
         redirect action:"list", params:[state:"pending"]
+    }
+
+    def pendingApplications() {
+        def apps = Application.listByDepartment(session?.user?.department).list(sort:"dateCreated", order:"desc")
+
+        [apps:apps]
+    }
+
+    def updateState(Integer id) {
+        def app = Application.get(id)
+
+        if (!app) {
+            response.sendError 404
+        }
+
+        def state = { application ->
+            if (application.state == "pending") {
+                "attending"
+            } else if (application.state == "attending") {
+                "attended"
+            } else {
+                "pending"
+            }
+        }
+
+        app.state = state(app)
+
+        flash.message = (!app.save()) ? "upps.something.when.wrong" : "app.state.succesfully.updated"
+        redirect action:"pendingApplications"
     }
 
 }
