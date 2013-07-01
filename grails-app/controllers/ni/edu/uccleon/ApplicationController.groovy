@@ -83,8 +83,15 @@ class ApplicationController {
         redirect action:"list", params:[state:"pending"]
     }
 
-    def pendingApplications() {
-        def apps = Application.listByDepartment(session?.user?.department).list(sort:"dateCreated", order:"desc")
+    def pendingApplications(String state) {
+        def apps
+
+        if (!state) {
+            apps = Application.listByDepartment(session?.user?.department).list(sort:"dateCreated", order:"desc")
+        } else {
+            apps = Application.listByDepartment(session?.user?.department).listByApplicationState(state).list(sort:"dateCreated", order:"desc")
+        }
+
 
         [apps:apps]
     }

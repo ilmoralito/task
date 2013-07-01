@@ -16,9 +16,11 @@
 				    	<span class="caret"></span>
 				    </a>
 					<ul class="dropdown-menu">
-						<li><g:link action="list" params="[state:'pending']">Pendientes</g:link></li>
-						<li><g:link action="list" params="[state:'attending']">Atendiendose</g:link></li>
-						<li><g:link action="list" params="[state:'attended']">Atendidas</g:link></li>
+						<li><g:link action="pendingApplications">Todas</g:link></li>
+                        <li class="divider"></li>
+                        <li><g:link action="pendingApplications" params="[state:'pending']">Pendientes</g:link></li>
+						<li><g:link action="pendingApplications" params="[state:'attending']">Atendiendose</g:link></li>
+						<li><g:link action="pendingApplications" params="[state:'attended']">Atendidas</g:link></li>
 					</ul>
 				</div>
 			</div>
