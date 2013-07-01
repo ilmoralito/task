@@ -1,3 +1,11 @@
 .main {
 	margin-top: 40px;
 }
+
+.btn-fixed {
+    width: 78px !important;
+}
+
+.td-mini {
+	width:1px;
+}
