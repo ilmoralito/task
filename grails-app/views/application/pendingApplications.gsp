@@ -34,6 +34,7 @@
     		<thead>
     			<th>Descripcion</th>
     			<th></th>
+                <th></th>
     		</thead>
     		<tbdoy>
     			<g:each in="${apps}" var="app">
@@ -44,10 +45,12 @@
     						</g:link>
     					</td>
     					<td class="td-mini">
-    						<g:link action="updateState" id="${app.id}">
-    							${app.state}
-    						</g:link>
+    						<g:link action="updateState" id="${app.id}">${app.state}</g:link>
     					</td>
+                        <td class="td-mini">
+                            <g:renderDate date="${app.dateCreated}"/>
+
+                        </td>
     				</tr>
     			</g:each>
     		</tbdoy>
