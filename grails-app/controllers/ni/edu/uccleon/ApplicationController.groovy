@@ -119,4 +119,14 @@ class ApplicationController {
         redirect action:"pendingApplications"
     }
 
+    def info(Integer id) {
+        def app = Application.get(id)
+
+        if (!app) {
+            response.sendError 404
+        }
+
+        [app:app]
+    }
+
 }
