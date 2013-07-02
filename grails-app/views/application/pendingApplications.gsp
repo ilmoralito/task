@@ -40,7 +40,7 @@
     			<g:each in="${apps}" var="app">
     				<tr>
     					<td>
-    						<g:link action="show" id="${app.id}">
+    						<g:link action="info" id="${app.id}">
     							${app.description} por <strong>${app.user.fullName}</strong> - ${app.user.department}
     						</g:link>
     					</td>
