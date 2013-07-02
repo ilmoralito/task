@@ -31,7 +31,7 @@ class Application {
     }
 
     static belongsTo = [user:User]
-    static hasMany = [attendedBy: String]
+    static hasMany = [attendedBy: String, tasks:Task]
 
     String toString() {
     	"$user $dateCreated"
