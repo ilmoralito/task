@@ -14,7 +14,6 @@ class BootStrap {
 
     			def app1 = Application.build(department:"Soporte Tecnico", user:u1)
                 def app2 = Application.build(department:"Administracion", user:u2)
-
                 def app3 = Application.build(department:"Soporte Tecnico", user:u3)
                 def app4 = Application.build(department:"Soporte Tecnico", user:u4)
     		break
