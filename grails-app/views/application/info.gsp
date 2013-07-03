@@ -58,7 +58,7 @@
 			<br>
 
 			<g:form action="" style="width:90.666%;">
-				<g:select name="userName" from="${users.list()}" optionValue="fullName" class="span2"/>
+				<g:select name="userName" from="${users.listByNotDepartment(session?.user?.department).list()}" optionValue="fullName" class="span2"/>
 				<button class="btn"><i class="icon-plus"></i></button>
 			</g:form>
 		</div>

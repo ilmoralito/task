@@ -32,6 +32,10 @@ class User {
         isEnabled {
             eq "enabled", true
         }
+
+        listByNotDepartment { department ->
+            ne "department", department
+        }
     }
 
     static hasMany = [applications:Application]
