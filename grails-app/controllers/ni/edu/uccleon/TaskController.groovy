@@ -2,11 +2,15 @@ package ni.edu.uccleon
 
 class TaskController {
 
-	static defaultAction = ""
-	static allowedMethods = []
+	static defaultAction = "create"
+	static allowedMethods = [
+		create:["GET", "POST"]
+	]
 
-    def index() {
+    def create() {
+    	if (request.method == "POST") {
 
+    	}
     }
 
 }
