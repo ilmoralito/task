@@ -4,7 +4,7 @@ class Task {
 
     String problem
     String solution
-    Boolean enabled
+    Boolean state = false
 
 	Date dateCreated
 	Date lastUpdated

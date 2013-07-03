@@ -15,6 +15,33 @@
 			<p>
 				Por ${app.user.fullName} en ${app.user.department}, <g:renderDate date="${app.dateCreated}"/>
 			</p>
+
+			<g:if test="${app.tasks}">
+				<table class="table table-hover">
+						<thead>
+							<th></th>
+							<th></th>
+							<th></th>
+						</thead>
+						<tbody>
+							<g:each in="${app.tasks}" var="task">
+								<tr>
+									<td><g:link controller="task" action="show" params="[applicationId:app.id, id:task.id]">${task.problem}</g:link></td>
+									<td class="td-mini">
+										<g:link controller="task" action="updateState" params="[applicationId:app.id, id:task.id]">
+											<g:state state="${task.state}"/>
+										</g:link>
+									</td>
+									<td class="td-mini">
+										<g:link controller="task" action="delete" params="[applicationId:app.id, id:task.id]">
+											<i class="icon-trash"></i>
+										</g:link>
+									</td>
+								</tr>
+							</g:each>
+						</tbody>
+					</table>
+			</g:if>
 		</div>
 		<div class="span2">
 			<g:link action="updateState" id="${app.id}" class="btn btn-block">${app.state}</g:link>

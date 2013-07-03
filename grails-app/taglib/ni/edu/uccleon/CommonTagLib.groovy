@@ -22,4 +22,14 @@ class CommonTagLib {
 			out << dateCreatedYear + "-" + dateCreated[Calendar.MONTH] + "-" + dateCreated[Calendar.DATE]
 		}
 	}
+
+	def state = {attrs, body ->
+		def state = attrs.state
+
+		if (!state) {
+			out << "<i class='icon-time'></i>"
+		} else {
+			out << "<i class='icon-ok'></i>"
+		}
+	}
 }
