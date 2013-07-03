@@ -16,6 +16,10 @@ class BootStrap {
                 def app2 = Application.build(department:"Administracion", user:u2)
                 def app3 = Application.build(department:"Soporte Tecnico", user:u3)
                 def app4 = Application.build(department:"Soporte Tecnico", user:u4)
+
+                def task1 = Task.build(application:app1)
+                def task2 = Task.build(application:app1)
+                def task3 = Task.build(application:app1)
     		break
     	}
     }
