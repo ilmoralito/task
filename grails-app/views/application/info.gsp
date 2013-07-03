@@ -44,7 +44,7 @@
 			</g:if>
 		</div>
 		<div class="span2">
-			<g:link action="updateState" id="${app.id}" class="btn btn-block">${app.state}</g:link>
+			<g:link action="updateState" params="[id:app.id, flag:true]" class="btn btn-block">${app.state}</g:link>
 			<g:link controller="task" action="create" id="${app.id}" class="btn btn-block">Agregar tarea</g:link>
 
 			<br>

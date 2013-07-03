@@ -96,7 +96,7 @@ class ApplicationController {
         [apps:apps]
     }
 
-    def updateState(Integer id) {
+    def updateState(Integer id, Boolean flag) {
         def app = Application.get(id)
 
         if (!app) {
@@ -116,7 +116,12 @@ class ApplicationController {
         app.state = state(app)
 
         flash.message = (!app.save()) ? "upps.something.when.wrong" : "app.state.succesfully.updated"
-        redirect action:"pendingApplications"
+
+        if (!flag) {
+            redirect action:"pendingApplications"
+        } else {
+            redirect action:"info", params:[id:id]
+        }
     }
 
     def info(Integer id) {
