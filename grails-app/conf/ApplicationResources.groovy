@@ -6,4 +6,8 @@ modules = {
     style {
     	resource url:"css/style.css"
     }
+
+    app {
+    	resource url:"js/app.js"
+    }
 }

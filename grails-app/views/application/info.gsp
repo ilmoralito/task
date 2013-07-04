@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="layout" content="back">
 	<title>Solicitud</title>
-	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-collapse, bootstrap-transition, style"/>
+	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-collapse, bootstrap-transition, style, app"/>
 </head>
 <body>
 	<g:set var="users" value="${ni.edu.uccleon.User}"/>
