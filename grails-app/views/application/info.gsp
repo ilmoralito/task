@@ -49,17 +49,19 @@
 
 			<br>
 
-			<g:each in="${users.findAllByDepartment(app.user.department)}" var="user">
-				<label class="checkbox">
-					<g:checkBox name="attendedBy" value="${user.email}"/> ${user.fullName}
-				</label>
-			</g:each>
-
-			<br>
-
-			<g:form action="" style="width:90.666%;">
-				<g:select name="userName" from="${users.listByNotDepartment(session?.user?.department).list()}" optionValue="fullName" class="span2"/>
-				<button class="btn"><i class="icon-plus"></i></button>
+			<g:form action="addUsers">
+				<g:hiddenField name="id" value="${app.id}"/>
+				<g:each in="${users.list(sort:'department', order:'desc')}" var="user">
+					<label class="checkbox">
+						<g:if test="${app.attendedBy.contains(user.email)}">
+							<g:checkBox name="attendedBy" value="${user.email}" checked="true"/> ${user.fullName}
+						</g:if>
+						<g:else>
+							<g:checkBox name="attendedBy" value="${user.email}" checked="false"/> ${user.fullName}
+						</g:else>
+					</label>
+				</g:each>
+				<button type="submit" class="btn"><i class="icon-ok"></i></button>
 			</g:form>
 		</div>
 	</div>

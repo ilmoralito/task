@@ -134,4 +134,31 @@ class ApplicationController {
         [app:app]
     }
 
+    def addUsers(Integer id) {
+        def users = params.findAll {key, value ->
+            key == "attendedBy"
+        }
+
+        if (users) {
+            def app = Application.get(id)
+
+            if (!app) {
+                response.sendError 404
+            }
+
+            if (users.attendedBy instanceof String[]) {
+                app.attendedBy = users.attendedBy
+            } else {
+                List myUser = []
+                myUser << users.attendedBy
+
+                app.attendedBy = myUser
+            }
+
+            app.save()
+        }
+
+        redirect action:"info", id:id
+    }
+
 }
