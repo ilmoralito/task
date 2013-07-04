@@ -32,4 +32,16 @@ class CommonTagLib {
 			out << "<i class='icon-ok'></i>"
 		}
 	}
+
+	def status = {attrs, body ->
+		def status = attrs.status
+
+		if (status == "pending") {
+			out << "Pendiente"
+		} else if (status == "attending") {
+			out << "Atendiendo"
+		} else {
+			out << "Terminado"
+		}
+	}
 }
