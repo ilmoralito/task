@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="layout" content="back">
 	<title>Solicitud</title>
-	<r:require modules = "bootstrap-css, bootstrap-responsive-css, style"/>
+	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-collapse, bootstrap-transition, style"/>
 </head>
 <body>
 	<g:set var="users" value="${ni.edu.uccleon.User}"/>
@@ -52,19 +52,29 @@
 
 			<g:form action="addUsers">
 				<g:hiddenField name="id" value="${app.id}"/>
-				<g:each in="${departments}" var="dept">
-					<h5>${dept}</h5>
-					<g:each in="${users.findAllByDepartment(dept)}" var="user">
-						<label class="checkbox">
-							<g:if test="${app.attendedBy.contains(user.email)}">
-								<g:checkBox name="attendedBy" value="${user.email}" checked="true"/> ${user.fullName}
-							</g:if>
-							<g:else>
-								<g:checkBox name="attendedBy" value="${user.email}" checked="false"/> ${user.fullName}
-							</g:else>
-						</label>
-					</g:each>
-				</g:each>
+				<div class="accordion" id="accordion">
+					<div class="accordion-group">
+						<g:each in="${departments}" var="dept" status="i">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse" href="#collapse${i}">${dept}</a>
+							</div>
+							<div id="collapse${i}" class="accordion-body collapse">
+								<div class="accordion-inner">
+								<g:each in="${users.findAllByDepartment(dept)}" var="user">
+									<label class="checkbox">
+										<g:if test="${app.attendedBy.contains(user.email)}">
+											<g:checkBox name="attendedBy" value="${user.email}" checked="true"/> ${user.fullName}
+										</g:if>
+										<g:else>
+											<g:checkBox name="attendedBy" value="${user.email}" checked="false"/> ${user.fullName}
+										</g:else>
+									</label>
+								</g:each>
+								</div>
+							</div>
+						</g:each>
+					</div>
+				</div>
 				<button type="submit" class="btn"><i class="icon-ok"></i></button>
 			</g:form>
 		</div>
