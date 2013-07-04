@@ -6,6 +6,8 @@
 	<r:layoutResources/>
 </head>
 <body>
+	<g:set var="app" value="${ni.edu.uccleon.Application}"/>
+
 	<div class="container main">
 		<div class="row">
 			<div class="span2">
@@ -13,7 +15,11 @@
 				<ul class="nav nav-tabs nav-stacked">
 					<li><g:link controller="user" action="profile">Perfil</g:link></li>
 					<li><g:link controller="application" params="[state:'pending']">Solicitudes</g:link></li>
-					<li><g:link controller="application" action="pendingApplications">Solicitudes de servicio</g:link></li>
+					<li>
+						<g:link controller="application" action="pendingApplications">
+							Requerimientos ${app.listByDepartment(session?.user?.department).listByApplicationState("pending").count()}
+						</g:link>
+					</li>
 					<li><g:link controller="user" action="logout">Cerrar sesion</g:link></li>
     			</ul>
 			</div>
