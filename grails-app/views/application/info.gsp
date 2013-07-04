@@ -8,6 +8,7 @@
 </head>
 <body>
 	<g:set var="users" value="${ni.edu.uccleon.User}"/>
+	<g:set var="departments" value="${grailsApplication.config.ni.edu.uccleon.departments}"/>
 
 	<div class="row">
 		<div class="span8">
@@ -51,15 +52,18 @@
 
 			<g:form action="addUsers">
 				<g:hiddenField name="id" value="${app.id}"/>
-				<g:each in="${users.list(sort:'department', order:'desc')}" var="user">
-					<label class="checkbox">
-						<g:if test="${app.attendedBy.contains(user.email)}">
-							<g:checkBox name="attendedBy" value="${user.email}" checked="true"/> ${user.fullName}
-						</g:if>
-						<g:else>
-							<g:checkBox name="attendedBy" value="${user.email}" checked="false"/> ${user.fullName}
-						</g:else>
-					</label>
+				<g:each in="${departments}" var="dept">
+					<h5>${dept}</h5>
+					<g:each in="${users.findAllByDepartment(dept)}" var="user">
+						<label class="checkbox">
+							<g:if test="${app.attendedBy.contains(user.email)}">
+								<g:checkBox name="attendedBy" value="${user.email}" checked="true"/> ${user.fullName}
+							</g:if>
+							<g:else>
+								<g:checkBox name="attendedBy" value="${user.email}" checked="false"/> ${user.fullName}
+							</g:else>
+						</label>
+					</g:each>
 				</g:each>
 				<button type="submit" class="btn"><i class="icon-ok"></i></button>
 			</g:form>
