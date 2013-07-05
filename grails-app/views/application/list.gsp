@@ -32,6 +32,9 @@
     	<table class="table table-hover">
     		<thead>
     			<th>Descripcion</th>
+    			<g:if test="${params.state == 'attended'}">
+    				<th></th>
+    			</g:if>
     		</thead>
     		<tbdoy>
     			<g:each in="${apps}" var="app">
@@ -39,6 +42,13 @@
     					<td>
     						<g:link action="show" id="${app.id}">${app.description}</g:link>
     					</td>
+    					<g:if test="${params.state == 'attended'}">
+    						<td class="td-mini">
+    							<g:link action="updateState" id="${app.id}" class="btn btn-mini btn-info">
+    								<g:status status="${app.state}"/>
+    							</g:link>
+    						</td>
+    					</g:if>
     				</tr>
     			</g:each>
     		</tbdoy>
