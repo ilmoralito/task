@@ -110,7 +110,11 @@ class ApplicationController {
                 "attended"
             } else {
                 if (application.user.email == session?.user?.email) {
-                    "done"
+                    if (application.state == "done") {
+                        "attending"
+                    } else {
+                        "done"
+                    }
                 } else {
                     "pending"
                 }

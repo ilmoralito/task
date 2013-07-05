@@ -20,6 +20,7 @@
 						<li><g:link action="list" params="[state:'pending']">Pendientes</g:link></li>
 						<li><g:link action="list" params="[state:'attending']">Atendiendose</g:link></li>
 						<li><g:link action="list" params="[state:'attended']">Atendidas</g:link></li>
+						<li><g:link action="list" params="[state:'done']">Terminadas</g:link></li>
 					</ul>
 				</div>
 			</div>
@@ -32,9 +33,6 @@
     	<table class="table table-hover">
     		<thead>
     			<th>Descripcion</th>
-    			<g:if test="${params.state == 'attended'}">
-    				<th></th>
-    			</g:if>
     		</thead>
     		<tbdoy>
     			<g:each in="${apps}" var="app">
@@ -42,7 +40,7 @@
     					<td>
     						<g:link action="show" id="${app.id}">${app.description}</g:link>
     					</td>
-    					<g:if test="${params.state == 'attended'}">
+    					<g:if test="${params.state == 'attended' || params.state == 'done'}">
     						<td class="td-mini">
     							<g:link action="updateState" id="${app.id}" class="btn btn-mini btn-info">
     								<g:status status="${app.state}"/>

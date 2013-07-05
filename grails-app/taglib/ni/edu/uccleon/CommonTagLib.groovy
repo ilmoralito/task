@@ -40,8 +40,10 @@ class CommonTagLib {
 			out << "Pendiente"
 		} else if (status == "attending") {
 			out << "Atendiendo"
-		} else {
+		} else if (status == "attended") {
 			out << "Terminado"
+		} else {
+			out << "Hecho"
 		}
 	}
 }
