@@ -9,16 +9,24 @@
 <body>
 	<ul class="nav nav-tabs">
     	<li class="${(params.state == 'pending') ? 'active' : 'no-active'}">
-    		<g:link action="list" params="[state:'pending']">Pendientes</g:link>
+    		<g:link action="list" params="[state:'pending']">
+    			Pendientes <g:countAppsByStatus status="pending"/>
+    		</g:link>
     	</li>
     	<li class="${(params.state == 'attending') ? 'active' : 'no-active'}">
-    		<g:link action="list" params="[state:'attending']">Atendiendose</g:link>
+    		<g:link action="list" params="[state:'attending']">
+    			Atendiendose <g:countAppsByStatus status="attending"/>
+    		</g:link>
     	</li>
     	<li class="${(params.state == 'attended') ? 'active' : 'no-active'}">
-    		<g:link action="list" params="[state:'attended']">Atendidas</g:link>
+    		<g:link action="list" params="[state:'attended']">
+    			Atendidas <g:countAppsByStatus status="attended"/>
+    		</g:link>
     	</li>
     	<li class="${(params.state == 'done') ? 'active' : 'no-active'}">
-    		<g:link action="list" params="[state:'done']">Terminadas</g:link>
+    		<g:link action="list" params="[state:'done']">
+    			Terminadas
+    		</g:link>
     	</li>
     </ul>
 

@@ -46,4 +46,14 @@ class CommonTagLib {
 			out << "Hecho"
 		}
 	}
+
+	def countAppsByStatus = {attrs, body ->
+		def status = attrs.status
+
+		def count = Application.listByState(session?.user, status).count()
+
+		if (count) {
+			out << count
+		}
+	}
 }
