@@ -12,7 +12,7 @@ class Application {
     static constraints = {
         department blank:false
         description blank:false, maxSize:140
-        state inList:["pending", "attending", "attended"], maxSize:255
+        state inList:["pending", "attending", "attended", "done"], maxSize:255
     }
 
     static namedQueries = {
