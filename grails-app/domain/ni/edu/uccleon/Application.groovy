@@ -5,6 +5,7 @@ class Application {
     String department
     String description
     String state = "pending"
+    User owner
 
 	Date dateCreated
 	Date lastUpdated
@@ -13,6 +14,7 @@ class Application {
         department blank:false
         description blank:false, maxSize:140
         state inList:["pending", "attending", "attended", "done"], maxSize:255
+        owner nullable:true
     }
 
     static namedQueries = {

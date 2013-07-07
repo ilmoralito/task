@@ -104,24 +104,33 @@ class ApplicationController {
         }
 
         def state = { application ->
-            if (application.state == "pending") {
-                "attending"
-            } else if (application.state == "attending") {
-                "attended"
-            } else {
-                if (application.user.email == session?.user?.email) {
-                    if (application.state == "done") {
-                        "attending"
-                    } else {
-                        "done"
-                    }
+            if (application.user.email == session?.user?.email) {
+                if (application.state == "attended") {
+                    "done"
+                } else if (application.state == "done") {
+                    "attending"
+                }
+            } else if (application.user != session?.user && application.state != "done") {
+                if (application.state == "pending") {
+                    "attending"
+                } else if (application.state == "attending") {
+                    "attended"
                 } else {
                     "pending"
                 }
             }
+
         }
 
-        app.state = state(app)
+        def status = state(app)
+
+        app.state = status
+
+        if (status == "attending" && app.user.email != session?.user?.email) {
+            app.owner = session?.user
+        } else if (status == "pending") {
+            app.owner = null
+        }
 
         flash.message = (!app.save()) ? "upps.something.when.wrong" : "app.state.succesfully.updated"
 
