@@ -56,4 +56,19 @@ class CommonTagLib {
 			out << count
 		}
 	}
+
+	def profile = {attrs, body ->
+		def fullName = session?.user?.fullName
+		def names = fullName.split(" ")
+		def size = names.size()
+
+		if (size == 1 || size == 2) {
+			out << fullName
+		} else if (size == 3) {
+			out << names[0] + " " + names[1]
+		} else {
+			out << names[0] + " " + names[2]
+		}
+
+	}
 }
