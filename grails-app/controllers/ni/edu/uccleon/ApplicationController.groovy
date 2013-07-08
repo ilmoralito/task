@@ -2,7 +2,7 @@ package ni.edu.uccleon
 
 class ApplicationController {
 
-    def beforeInterceptor = [action:this.&check, only:["update", "delete"]]
+    def beforeInterceptor = [action:this.&check, only:["update", "delete", "updateState"]]
 
 	static defaultAction = "list"
 	static allowedMethods = [
@@ -15,10 +15,20 @@ class ApplicationController {
     private check() {
         def app = Application.get(params.id)
 
-        if (app.state != "pending") {
-            flash.message = "action.not.allowed"
-            redirect action:"list", params:[state:app.state]
-            return false
+        if (actionName == "updateState") {
+            if (app.owner) {
+                if (app.owner.email != session?.user?.email) {
+                    flash.message = "access.denied.current.app.is.already.attended"
+                    redirect action:"pendingApplications"
+                    return false
+                }
+            }
+        } else {
+            if (app.state != "pending") {
+                flash.message = "action.not.allowed"
+                redirect action:"list", params:[state:app.state]
+                return false
+            }
         }
     }
 

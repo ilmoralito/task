@@ -7,15 +7,12 @@ class BootStrap {
     	switch(GrailsUtil.environment) {
     		case "development":
                 //users
-                def u1 = User.build(fullName:"admin", password:"123", enabled:true, role:"admin")
-                def u2 = User.build(fullName:"amanda", password:"123", enabled:true, department:"Registro")
-                def u3 = User.build(fullName:"daniel", enabled:true, password:"123", department:"Registro")
-                def u4 = User.build(fullName:"hadned", enabled:true, password:"123", department:"Recursos Humanos")
+                def u1 = User.build(fullName:"admin", password:"123", enabled:true, role:"admin")//ST
+                def u2 = User.build(fullName:"mario", password:"123", enabled:true, role:"user")//ST
+                def u3 = User.build(fullName:"amanda", password:"123", enabled:true, department:"Registro")
 
-    			def app1 = Application.build(department:"Soporte Tecnico", user:u2, state:"attended")
-                def app2 = Application.build(department:"Soporte Tecnico", description:"very important", user:u2)
-                def app3 = Application.build(department:"Soporte Tecnico", user:u3)
-                def app4 = Application.build(department:"Soporte Tecnico", user:u4)
+    			def app1 = Application.build(department:"Soporte Tecnico", description:"very important test", user:u3, owner:u1, state:"attending")
+                def app2 = Application.build(department:"Soporte Tecnico", description:"lorem ipsum", user:u3)
 
                 def task1 = Task.build(application:app1)
                 def task2 = Task.build(application:app1)
