@@ -7,15 +7,20 @@
 </head>
 <body>
 	<g:set var="app" value="${ni.edu.uccleon.Application}"/>
+	<g:set var="appCrudActions" value="['list', 'create', 'show', 'delete']"/>
 
 	<div class="container main">
 		<div class="row">
 			<div class="span2">
 				<!--sidebar-->
 				<ul class="nav nav-tabs nav-stacked">
-					<li><g:link controller="user" action="profile"><g:profile/></g:link></li>
-					<li><g:link controller="application" params="[state:'pending']">Solicitudes</g:link></li>
-					<li>
+					<li class="${(controllerName == 'user') ? 'active' : 'no-active'}">
+						<g:link controller="user" action="profile"><g:profile/></g:link>
+					</li>
+					<li class="${(controllerName == 'application' && appCrudActions.contains(actionName)) ? 'active' : 'no-active'}">
+						<g:link controller="application" params="[state:'pending']">Solicitudes</g:link>
+					</li>
+					<li class="${(controllerName == 'application' && !appCrudActions.contains(actionName) || controllerName == 'task') ? 'active' : 'no-active'}">
 						<g:link controller="application" action="pendingApplications">
 							Requerimientos ${app.listByDepartment(session?.user?.department).listByApplicationState("pending").count()}
 						</g:link>
