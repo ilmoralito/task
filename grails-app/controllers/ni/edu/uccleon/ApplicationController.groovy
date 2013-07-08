@@ -16,7 +16,7 @@ class ApplicationController {
         def app = Application.get(params.id)
 
         if (actionName == "updateState") {
-            if (app.owner) {
+            if (app.owner && app.user.email != session?.user?.email) {
                 if (app.owner.email != session?.user?.email) {
                     flash.message = "access.denied.current.app.is.already.attended"
                     redirect action:"pendingApplications"
@@ -97,7 +97,12 @@ class ApplicationController {
         def apps
 
         if (!state) {
-            apps = Application.listByDepartment(session?.user?.department).list(sort:"dateCreated", order:"desc")
+            apps = Application.listByDepartment(session?.user?.department) {
+                or {
+                    isNull "owner"
+                    eq "owner", session?.user
+                }
+            }
         } else {
             apps = Application.listByDepartment(session?.user?.department).listByApplicationState(state).list(sort:"dateCreated", order:"desc")
         }
