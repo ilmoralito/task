@@ -7,27 +7,23 @@
 	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-dropdown, style"/>
 </head>
 <body>
-	<div class="row">
-		<div class="span10">
-			<div class="pull-right">
-				<div class="btn-group">
-				    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-				    	Solicitudes de servicio
-				    	<span class="caret"></span>
-				    </a>
-					<ul class="dropdown-menu">
-						<li><g:link action="pendingApplications">Todas</g:link></li>
-                        <li class="divider"></li>
-                        <li><g:link action="pendingApplications" params="[state:'pending']">Pendientes</g:link></li>
-						<li><g:link action="pendingApplications" params="[state:'attending']">Atendiendose</g:link></li>
-						<li><g:link action="pendingApplications" params="[state:'attended']">Atendidas</g:link></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<br>
+	<ul class="nav nav-tabs">
+        <li class="${(params.state == 'pending') ? 'active' : 'no-active'}">
+            <g:link action="pendingApplications" params="[state:'pending']">
+                Pendientes <g:countApps status="pending"/>
+            </g:link>
+        </li>
+        <li class="${(params.state == 'attending') ? 'active' : 'no-active'}">
+            <g:link action="pendingApplications" params="[state:'attending']">
+                Atendiendose <g:countApps status="attending"/>
+            </g:link>
+        </li>
+        <li class="${(params.state == 'attended') ? 'active' : 'no-active'}">
+            <g:link action="pendingApplications" params="[state:'attended']">
+                Atendidas <g:countApps status="attended"/>
+            </g:link>
+        </li>
+    </ul>
 
     <g:if test="${apps}">
     	<table class="table table-hover">

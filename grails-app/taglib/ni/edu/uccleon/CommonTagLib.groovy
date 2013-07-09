@@ -57,6 +57,23 @@ class CommonTagLib {
 		}
 	}
 
+	def countApps = {attrs, body ->
+		def status = attrs.status
+        def criteria = Application.createCriteria()
+        def count = criteria.count {
+        	eq "department", session?.user?.department
+        	eq "state", status
+        	or {
+                isNull "owner"
+                eq "owner", session?.user
+            }
+        }
+
+		if (count) {
+			out << count
+		}
+	}
+
 	def profile = {attrs, body ->
 		def fullName = session?.user?.fullName
 		def names = fullName.split(" ")

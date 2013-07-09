@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="layout" content="back">
 	<title>Solicitudes</title>
-	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-dropdown, style"/>
+	<r:require modules = "bootstrap-css, bootstrap-responsive-css, style"/>
 </head>
 <body>
 	<ul class="nav nav-tabs">
