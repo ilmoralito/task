@@ -7,7 +7,7 @@ class User {
     String fullName
     String department
     String role = "user"
-    Boolean enabled
+    Boolean enabled = false
 
 	Date dateCreated
 	Date lastUpdated

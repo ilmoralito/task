@@ -9,8 +9,99 @@ class UserController {
 		login:["GET", "POST"],
 		logout:"GET",
 		profile:["GET", "POST"],
-		updatePassword:"POST"
+		updatePassword:"POST",
+        list:"GET",
+        create:["GET", "POST"],
+        delete:"GET",
+        show:"GET",
+        update:"POST"
 	]
+
+    def list() {
+        [users:User.list()]
+    }
+
+    def create() {
+        if (request.method == "POST") {
+            params.password = "123"
+
+            def user = new User(params)
+
+            if (!user.save()) {
+                return [user:user]
+            }
+
+            flash.message = "user.succesfully.created"
+        }
+    }
+
+    def delete(Integer id) {
+        def user = User.get(id)
+
+        if (!user) {
+            response.sendError 404
+        }
+
+        user.delete()
+
+        flash.message = "user.deleted"
+        redirect action:"list"
+    }
+
+    def show(Integer id) {
+        def user = User.get(id)
+
+        if (!user) {
+            response.sendError 404
+        }
+
+        [user:user]
+    }
+
+    def update(Integer id) {
+        def user = User.get(id)
+
+        if (!user) {
+            response.sendError 404
+        }
+
+        user.properties["email", "fullName", "department"] = params
+
+        if (!user.save()) {
+            flash.message = "something.when.wrong.please.check.validations"
+            chain action:"show", params:[id:id, user:user]
+            return false
+        }
+
+        flash.message = "user.succesfully.updated"
+        redirect action:"show", params:[id:id]
+    }
+
+    def updateEnabledState(Integer id) {
+        def user = User.get(id)
+
+        if (!user) {
+            response.sendError 404
+        }
+
+        user.enabled = (user.enabled) ? false : true
+
+        flash.message = (!user.save()) ? "upps.something.when.wrong" : "user.enabled.state.succesfully.updated"
+        redirect action:"list"
+    }
+
+    def resetPassword(Integer id) {
+        def user = User.get(id)
+
+        if (!user) {
+            response.sendError 404
+        }
+
+        user.password = "123"
+
+        flash.message = (!user.save()) ? "upps.something.when.wrong" : "user.password.succesfully.updated"
+        redirect action:"show", params:[id:id]
+    }
 
     def login(String email, String password) {
     	if (request.method == "POST") {

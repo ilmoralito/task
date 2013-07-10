@@ -86,6 +86,11 @@ class CommonTagLib {
 		} else {
 			out << names[0] + " " + names[2]
 		}
+	}
 
+	def isRoleIs = {attrs, body ->
+		if (attrs.role == "admin") {
+			out << body()
+		}
 	}
 }

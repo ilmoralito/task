@@ -39,7 +39,12 @@
 		<div class="row">
 			<div class="span2">
 				<ul class="nav nav-tabs nav-stacked">
-					<li class="${(controllerName == 'user') ? 'active' : 'no-active'}">
+					<g:isRoleIs role="${session?.user?.role}">
+						<li class="${(controllerName == 'user' && actionName != 'profile') ? 'active' : 'no-active'}">
+							<g:link controller="user" action="list">Usuarios</g:link>
+						</li>
+					</g:isRoleIs>
+					<li class="${(controllerName == 'user' && actionName == 'profile') ? 'active' : 'no-active'}">
 						<g:link controller="user" action="profile"><g:profile/></g:link>
 					</li>
 					<li class="${(controllerName == 'application' && appCrudActions.contains(actionName)) ? 'active' : 'no-active'}">
