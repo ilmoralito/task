@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="layout" content="back">
 	<title>Usuarios</title>
-	<r:require modules = "bootstrap-css, bootstrap-responsive-css, style"/>
+	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-dropdown, style"/>
 </head>
 <body>
 	<g:hasErrors bean="${user}">
@@ -12,7 +12,7 @@
 	</g:hasErrors>
 
 	<div class="row">
-		<div class="span8">
+		<div class="span10">
 			<g:form action="update">
 				<g:hiddenField name="id" value="${params?.id}"/>
 				<g:render template="form"/>

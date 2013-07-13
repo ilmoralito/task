@@ -4,14 +4,14 @@
 	<meta charset="UTF-8">
 	<meta name="layout" content="back">
 	<title>Solicitud</title>
-	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-collapse, bootstrap-transition, style, app"/>
+	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-collapse, bootstrap-transition, bootstrap-dropdown, style, app"/>
 </head>
 <body>
 	<g:set var="users" value="${ni.edu.uccleon.User}"/>
 	<g:set var="departments" value="${grailsApplication.config.ni.edu.uccleon.departments}"/>
 
 	<div class="row">
-		<div class="span8">
+		<div class="span10">
 			<h4>${app.description}</h4>
 			<p>
 				Por ${app.user.fullName} en ${app.user.department}, <g:renderDate date="${app.dateCreated}"/>

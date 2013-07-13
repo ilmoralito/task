@@ -1,0 +1,13 @@
+---
+applications:
+- name: tasks
+  memory: 512M
+  instances: 1
+  url: ucctasksF.cfapps.io
+  path: target/task-0.1.war
+  services:
+    dev-db:
+      label: cleardb
+      provider: cleardb
+      version: n/a
+      plan: spark

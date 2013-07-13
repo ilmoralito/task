@@ -12,24 +12,40 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
 	    <div class="navbar-inner">
 		    <div class="container">
-		    	<g:link controller="application" params="[state:'pending']" class="brand">A123</g:link>
+		    	<g:link controller="application" params="[state:'pending']" class="brand">TAREAS</g:link>
 		    	<ul class="nav pull-right">
-		    		<li>
+		    		<li class="${(controllerName == 'application' && actionName == 'pendingApplications' && params.state == 'pending') ? 'active' : 'no-active'}">
 		    			<g:link controller="application" action="pendingApplications" params="[state:'pending']">
 		    				<i class="icon-time icon-white"></i> <g:countApps status="pending"/>
 		    			</g:link>
 		    		</li>
-		    		<li>
+		    		<li class="${(controllerName == 'application' && actionName == 'pendingApplications' && params.state == 'attending') ? 'active' : 'no-active'}">
 		    			<g:link controller="application" action="pendingApplications" params="[state:'attending']">
 		    				<i class="icon-hand-down icon-white"></i> <g:countApps status="attending"/>
 		    			</g:link>
 		    		</li>
-		    		<li>
+		    		<li class="${(controllerName == 'application' && actionName == 'pendingApplications' && params.state == 'attended') ? 'active' : 'no-active'}">
 		    			<g:link controller="application" action="pendingApplications" params="[state:'attended']">
 		    				<i class="icon-ok icon-white"></i> <g:countApps status="attended"/>
 		    			</g:link>
 		    		</li>
-		    		<li><g:link controller="user" action="logout">Salir</g:link></li>
+		    		<li class="dropdown">
+		    			 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-cog icon-white"></i>
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<g:isRoleIs role="${session?.user?.role}">
+								<li class="${(controllerName == 'user' && actionName != 'profile') ? 'active' : 'no-active'}">
+									<g:link controller="user" action="list">Usuarios</g:link>
+								</li>
+							</g:isRoleIs>
+							<li><g:link controller="application" params="[state:'pending']">Solicitudes</g:link></li>
+							<li><g:link controller="user" action="profile"><g:profile/></g:link></li>
+							<li class="divider"></li>
+							<li><g:link controller="user" action="logout">Salir</g:link></li>
+						</ul>
+		    		</li>
 		    	</ul>
 		    </div>
     	</div>
@@ -37,22 +53,7 @@
 
 	<div class="container main">
 		<div class="row">
-			<div class="span2">
-				<ul class="nav nav-tabs nav-stacked">
-					<g:isRoleIs role="${session?.user?.role}">
-						<li class="${(controllerName == 'user' && actionName != 'profile') ? 'active' : 'no-active'}">
-							<g:link controller="user" action="list">Usuarios</g:link>
-						</li>
-					</g:isRoleIs>
-					<li class="${(controllerName == 'user' && actionName == 'profile') ? 'active' : 'no-active'}">
-						<g:link controller="user" action="profile"><g:profile/></g:link>
-					</li>
-					<li class="${(controllerName == 'application' && appCrudActions.contains(actionName)) ? 'active' : 'no-active'}">
-						<g:link controller="application" params="[state:'pending']">Solicitudes</g:link>
-					</li>
-    			</ul>
-			</div>
-			<div class="span10">
+			<div class="span12">
 				<g:layoutBody/>
 				<g:if test="${flash.message}">${flash.message}</g:if>
 			</div>

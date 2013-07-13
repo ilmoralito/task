@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="layout" content="back">
 	<title>editar solicitud</title>
-	<r:require modules = "bootstrap-css, bootstrap-responsive-css, style"/>
+	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-dropdown, style"/>
 </head>
 <body>
 	<g:if test="${app.state == 'pending'}">

@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="layout" content="back">
 	<title>Solicitudes</title>
-	<r:require modules = "bootstrap-css, bootstrap-responsive-css, style"/>
+	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-dropdown, style"/>
 </head>
 <body>
 	<ul class="nav nav-tabs">
@@ -31,7 +31,7 @@
     </ul>
 
 	<div class="row">
-		<div class="span10">
+		<div class="span12">
 			<div class="pull-right">
 				<g:link action="create" class="btn">Crear solicitud</g:link>
 			</div>
