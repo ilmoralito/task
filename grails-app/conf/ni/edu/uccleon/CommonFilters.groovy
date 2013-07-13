@@ -4,8 +4,10 @@ class CommonFilters {
 
     def filters = {
         all(controller:'*', action:'*') {
+            def controllers = ["user", "application", "task"]
+
             before = {
-                if (!session.user && controllerName != "user" && actionName != "login") {
+                if (!session?.user && controllers.contains(controllerName) && actionName != "login") {
                     flash.message = "access.denied"
                     redirect controller:"user"
                     return false
