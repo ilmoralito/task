@@ -32,6 +32,8 @@ class Application {
         }
     }
 
+    List tasks
+
     static belongsTo = [user:User]
     static hasMany = [attendedBy: String, tasks:Task]
 
