@@ -1,10 +1,11 @@
 import ni.edu.uccleon.*
 import grails.util.GrailsUtil
-import grails.plugin.heroku.PostgresqlServiceInfo
+//import grails.plugin.heroku.PostgresqlServiceInfo
 
 class BootStrap {
 
     def init = { servletContext ->
+        /*
         String DATABASE_URL = System.getenv('DATABASE_URL')
         if (DATABASE_URL) {
             try {
@@ -15,6 +16,7 @@ class BootStrap {
                 println "Error occurred parsing DATABASE_URL: $e.message"
             }
         }
+        */
 
     	switch(GrailsUtil.environment) {
     		case "development":
