@@ -29,7 +29,6 @@
     	<table class="table table-hover">
     		<thead>
     			<th>Descripcion</th>
-    			<th></th>
                 <th></th>
     		</thead>
     		<tbdoy>
@@ -39,11 +38,6 @@
     						<g:link action="info" id="${app.id}">
     							${app.description} por <strong>${app.user.fullName}</strong> - ${app.user.department}
     						</g:link>
-    					</td>
-    					<td class="td-mini">
-    						<g:link action="updateState" id="${app.id}">
-                                <g:status status="${app.state}"/>
-                            </g:link>
     					</td>
                         <td class="td-mini">
                             <g:renderDate date="${app.dateCreated}"/>

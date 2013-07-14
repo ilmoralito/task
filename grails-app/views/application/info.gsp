@@ -45,7 +45,7 @@
 			</g:if>
 		</div>
 		<div class="span2">
-			<g:link action="updateState" params="[id:app.id, flag:true]" class="btn btn-block">
+			<g:link action="updateState" params="[id:app.id]" class="btn btn-block">
 				<g:status status="${app.state}"/>
 			</g:link>
 			<g:link controller="task" action="create" id="${app.id}" class="btn btn-block">

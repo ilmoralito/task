@@ -134,7 +134,6 @@ class ApplicationController {
                     "pending"
                 }
             }
-
         }
 
         def status = state(app)
@@ -143,27 +142,12 @@ class ApplicationController {
 
         if (status == "attending" && app.user.email != session?.user?.email) {
             app.owner = session?.user
-        } else if (status == "pending") {
+        } else if (status == "pending" && app.user.email != session?.user?.email) {
             app.owner = null
         }
 
         flash.message = (!app.save()) ? "upps.something.when.wrong" : "app.state.succesfully.updated"
-
-        if (!flag) {
-            def location = ""
-
-            print status
-
-            if (status == "done" || (status == "attending" && app.user.email == session?.user?.email)) {
-                location = "list"
-            } else {
-                location = "pendingApplications"
-            }
-
-            redirect action:location, params:["state":status]
-        } else {
-            redirect action:"info", params:[id:id]
-        }
+        redirect action:"info", params:[id:id]
     }
 
     def info(Integer id) {
