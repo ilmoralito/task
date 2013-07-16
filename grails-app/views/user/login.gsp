@@ -7,6 +7,8 @@
 	<r:require modules = "bootstrap-css, bootstrap-responsive-css, style"/>
 </head>
 <body>
+	<h4>Bienvenido al sistema de manejo de tareas</h4>
+
 	<g:form action="login">
 		<label for="email">Correo electronico</label>
 		<g:textField name="email" class="input-block-level" autofocus="true"  placeholder="Email"/>
