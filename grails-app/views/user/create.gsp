@@ -15,6 +15,7 @@
 		<g:render template="form"/>
 		<br>
 		<g:submitButton name="send" value="Guardar" class="btn"/>
+		<g:link action="list" class="btn">Regresar</g:link>
 	</g:form>
 </body>
 </html>
