@@ -109,13 +109,11 @@ class UserController {
 
     		if (!user) {
     			flash.message = "user.not.found"
-    			redirect action:"login"
-    			return
+                return [user:user]
     		}
 
     		session.user = user
     		redirect controller:"application", params:[state:"attended"]
-    		return
     	}
     }
 
