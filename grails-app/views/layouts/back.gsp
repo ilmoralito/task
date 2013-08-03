@@ -55,7 +55,7 @@
 		<div class="row">
 			<div class="span12">
 				<g:layoutBody/>
-				<g:if test="${flash.message}">${flash.message}</g:if>
+				<g:if test="${flash.message}"><strong>${flash.message}</strong></g:if>
 			</div>
 		</div>
 	</div>
