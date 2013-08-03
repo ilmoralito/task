@@ -7,6 +7,7 @@
 	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-dropdown, style"/>
 </head>
 <body>
+
 	<g:hasErrors bean="${user}">
 		<g:renderErrors bean="${user}"/>
 	</g:hasErrors>
@@ -18,6 +19,7 @@
 				<g:render template="form"/>
 				<br>
 				<g:submitButton name="send" value="Actualizar" class="btn"/>
+				<g:link action="list" class="btn">Regresar</g:link>
 			</g:form>
 		</div>
 		<div class="span2">
