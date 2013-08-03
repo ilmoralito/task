@@ -26,9 +26,24 @@ class UrlMappings {
 			action = "profile"
 		}
 
-		"/users" {
+		"/listUsers/$query?" {
 			controller = "user"
 			action = "list"
+		}
+
+		"/showUser/$id/$query?/$view?" {
+			controller = "user"
+			action = "show"
+		}
+
+		"/updateUserState/$id/$view?/$query?" {
+			controller = "user"
+			action = "updateEnabledState"
+		}
+
+		"/resetUserPassword/$id/$query?" {
+			controller = "user"
+			action = "resetPassword"
 		}
 
 		//application
