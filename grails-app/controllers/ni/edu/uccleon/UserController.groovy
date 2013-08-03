@@ -10,7 +10,7 @@ class UserController {
 		logout:"GET",
 		profile:["GET", "POST"],
 		updatePassword:"POST",
-        list:"GET",
+        list:["GET", "POST"],
         create:["GET", "POST"],
         delete:"GET",
         show:"GET",
@@ -18,7 +18,20 @@ class UserController {
 	]
 
     def list() {
-        [users:User.list()]
+        if (request.method == "POST" || params.query) {
+            def criteria = User.createCriteria()
+            def users = criteria.list() {
+                or {
+                    ilike "email", "%" + params?.query + "%"
+                    ilike "fullName", "%" + params?.query + "%"
+                    ilike "department", "%" + params?.query + "%"
+                }
+            }
+
+            return [users:users]
+        } else {
+            return [users:User.list()]
+        }
     }
 
     def create() {
@@ -69,12 +82,12 @@ class UserController {
 
         if (!user.save()) {
             flash.message = "something.when.wrong.please.check.validations"
-            chain action:"show", params:[id:id, user:user]
+            chain action:"show", params:[id:id, user:user, query:params?.query]
             return false
         }
 
         flash.message = "user.succesfully.updated"
-        redirect action:"show", params:[id:id]
+        redirect action:"show", params:[id:id, query:params?.query]
     }
 
     def updateEnabledState(Integer id) {

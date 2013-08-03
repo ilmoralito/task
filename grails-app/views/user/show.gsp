@@ -16,10 +16,11 @@
 		<div class="span10">
 			<g:form action="update">
 				<g:hiddenField name="id" value="${params?.id}"/>
+				<g:hiddenField name="query" value="${params?.query}"/>
 				<g:render template="form"/>
 				<br>
 				<g:submitButton name="send" value="Actualizar" class="btn"/>
-				<g:link action="list" class="btn">Regresar</g:link>
+				<g:link action="list" params="[query:params?.query]" class="btn">Regresar</g:link>
 			</g:form>
 		</div>
 		<div class="span2">

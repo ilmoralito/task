@@ -7,13 +7,25 @@
 	<r:require modules = "bootstrap-css, bootstrap-responsive-css, bootstrap-dropdown, style"/>
 </head>
 <body>
-	<div class="pull-right">
-		<g:link action="create" class="btn">Crear usuario</g:link>
+	<div class="row">
+		<div class="span12">
+			<div class="row">
+				<div class="span10">
+					<g:form action="list" class="form-inline pull-right">
+						<g:textField name="query" value="${params?.query}" placeholder="Buscar"/>
+						<button type="submit" class="btn"><i class="icon-search"></i></button>
+					</g:form>
+				</div>
+				<div class="span2">
+					<g:link action="create" class="btn btn-block">Crear usuario</g:link>
+				</div>
+			</div>
+		</div>
 	</div>
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>Usuarios</th>
+				<th>Usuarios ${users.size()}</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -22,7 +34,7 @@
 			<g:each in="${users}" var="user">
 				<tr>
 					<td>
-						<g:link action="show" params="[id:user.id]">${user.fullName}</g:link>
+						<g:link action="show" params="[id:user.id, query:params?.query]">${user.fullName}</g:link>
 					</td>
 					<td class="td-mini"><g:link action="updateEnabledState" params="[id:user.id]">
 						<g:if test="${user.enabled}">
