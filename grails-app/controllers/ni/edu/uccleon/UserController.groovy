@@ -100,7 +100,10 @@ class UserController {
         user.enabled = (user.enabled) ? false : true
 
         flash.message = (!user.save()) ? "upps.something.when.wrong" : "user.enabled.state.succesfully.updated"
-        redirect action:"list"
+
+        def path = (!params.view) ? "list" : "show"
+
+        redirect action:path, params:params
     }
 
     def resetPassword(Integer id) {
@@ -113,7 +116,7 @@ class UserController {
         user.password = "123"
 
         flash.message = (!user.save()) ? "upps.something.when.wrong" : "user.password.succesfully.updated"
-        redirect action:"show", params:[id:id]
+        redirect action:"show", params:params
     }
 
     def login(String email, String password) {

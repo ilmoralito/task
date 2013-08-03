@@ -24,7 +24,10 @@
 			</g:form>
 		</div>
 		<div class="span2">
-			<g:link action="resetPassword" params="[id:user.id]" class="btn btn-warning btn-block">Resturar clave</g:link>
+			<g:link action="updateEnabledState" params="[id:params?.id, view:'show', query:params?.query]" class="btn btn-block">
+				Estado <i class="icon-${(user.enabled) ? 'ok' : 'time'}"></i>
+			</g:link>
+			<g:link action="resetPassword" params="[id:user.id, query:params?.query]" class="btn btn-warning btn-block">Resturar clave</g:link>
 		</div>
 	</div>
 </body>
